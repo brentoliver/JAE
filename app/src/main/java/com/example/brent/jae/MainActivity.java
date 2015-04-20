@@ -1,6 +1,8 @@
 package com.example.brent.jae;
 
-import android.os.SystemClock;
+import android.app.ActionBar;
+
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -12,14 +14,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ScrollView;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.AbstractList;
+
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -50,6 +50,8 @@ public class MainActivity extends ActionBarActivity {
         // selects the XML file to determine the layout
         // ContentView determines what is currently displayed to the screen
         // R is a resource object that links between the java code and resources created as XML files
+
+
         setContentView(R.layout.activity_main);
 
         //Database
@@ -62,6 +64,7 @@ public class MainActivity extends ActionBarActivity {
         totalQuestions = questions.size();
         if (questions.isEmpty())
             qm.initData();
+
         spinner();
 
     }
