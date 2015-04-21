@@ -85,4 +85,17 @@
         android:textStyle="italic"
         android:background="@android:drawable/btn_default" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="knownClick"
+        android:nestedScrollingEnabled="false"
+        android:background="@android:drawable/btn_default" />
+
 </RelativeLayout>

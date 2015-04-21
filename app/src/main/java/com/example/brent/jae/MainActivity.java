@@ -57,7 +57,9 @@ public class MainActivity extends ActionBarActivity {
         //Database
         db = new DBHelper(this);
         qm = new QManager(db);
-        db.deleteDb(this);
+
+        // uncomment this to re-initialize the database
+        /*db.deleteDb(this);*/
 
         questions = new ArrayList<>();
         questions = db.getAllQuestions();
@@ -138,7 +140,19 @@ public class MainActivity extends ActionBarActivity {
                 dontKnow.setVisibility(View.VISIBLE);
                 nextQ.setVisibility(View.INVISIBLE);
                 break;
-
+            case R.id.back:
+                if (currentQ > 0){
+                    currentQ--;
+                    tv.setText(questions.get(currentQ).getQuestion());
+                    iKnow.setVisibility(View.VISIBLE);
+                    dontKnow.setVisibility(View.VISIBLE);
+                    nextQ.setVisibility(View.INVISIBLE);
+                    break;
+                }
+                else{
+                    goHome();
+                    break;
+                }
         }
 
     }
