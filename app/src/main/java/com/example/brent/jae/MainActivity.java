@@ -28,12 +28,10 @@ public class MainActivity extends ActionBarActivity {
 
 
     private int currentQ = 0;
-    private int totalQuestions;
-    private int totalKnown;
     private List<Question> questions;
     private TextView myTextView;
     private TextView known;
-    private TextView stat;
+
 
     private Button nextQ;
     private DBHelper db;
@@ -63,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
         questions = new ArrayList<>();
         questions = db.getAllQuestions();
-        totalQuestions = questions.size();
+        int totalQuestions = questions.size();
         if (questions.isEmpty())
             qm.initData();
 
@@ -80,8 +78,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.question);
         myTextView = (TextView) findViewById(R.id.textView);
         myTextView.setText(questions.get(currentQ).getQuestion());
+
+        // hide next question button
         nextQ = (Button) findViewById(R.id.nextQ);
         nextQ.setVisibility(View.INVISIBLE);
+
+        // initialize known stats and display
         known = (TextView) findViewById(R.id.known);
         updateStats();
 
@@ -159,8 +161,8 @@ public class MainActivity extends ActionBarActivity {
 
     public void updateStats() {
         int count = db.getKnownCount();
-        int totalcount = db.getTotalCount();
-        known.setText(" " + count + " of the " + totalcount + " questions.");
+        int totalCount = db.getTotalCount();
+        known.setText(" " + count + " of the " + totalCount + " questions.");
     }
 
     @Override
@@ -233,7 +235,6 @@ public class MainActivity extends ActionBarActivity {
     public void goHome(){
         setContentView(R.layout.activity_main);
         spinner();
-        //updateStats();
         currentQ = 0;
 
 
